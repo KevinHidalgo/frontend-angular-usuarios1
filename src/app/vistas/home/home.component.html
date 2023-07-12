@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="container">
+  <h3>Lista de Usuarios</h3>
+
+  <button type="button" class="btn btn-primary" (click)="nuevoUsuario()">
+    Agregar Nuevo
+  </button>
+  <br /><br />
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">ROL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let usuario of usuarios"
+        (click)="editarUsuario(usuario.idUsuario)"
+        class="table-active"
+      >
+        <th scope="row">{{ usuario.idUsuario }}</th>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.idRol }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-footer></app-footer>

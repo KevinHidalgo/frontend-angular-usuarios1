@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div class="container">
+  <form [formGroup]="agregarForm" (ngSubmit)="postForm(agregarForm.value)">
+    <div class="col">
+      <label for="">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre Usuario"
+        formControlName="nombre"
+      />
+    </div>
+    <br />
+    <div class="col">
+      <label for="">Clave</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Clave"
+        formControlName="clave"
+      />
+    </div>
+    <br />
+    <div class="col">
+      <label for="">Rol</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Rol"
+        formControlName="idRol"
+      />
+    </div>
+    <br /><br />
+    <button type="submit" class="btn btn-primary">Agregar</button>
+  </form>
+</div>
+
+<app-footer></app-footer>
