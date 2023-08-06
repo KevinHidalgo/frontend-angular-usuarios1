@@ -5,6 +5,7 @@ import {listaUsuariosI} from '../../modelos/listaUsuarios.interface';
 import {UsuarioI} from '../../modelos/usuario.interface';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ResponseL } from '../../modelos/ResponseL.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,9 @@ export class ApiService {
     return this.user;
    }*/
 
-  loginByEmail(form:LoginI):Observable<ResponseI>{
+  loginByEmail(form:LoginI):Observable<ResponseL>{
     let direccion=this.url + "Login/login"
-    return this.http.post<ResponseI>(direccion,form);
+    return this.http.post<ResponseL>(direccion,form);
   }
 
   getAllUsers():Observable<listaUsuariosI[]>{

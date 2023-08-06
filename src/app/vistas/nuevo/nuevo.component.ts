@@ -18,6 +18,9 @@ export class NuevoComponent {
   
   constructor(private router:Router, private api:ApiService){}
 
+  errorStatus:boolean = false;
+  errorMsj:any = "";
+
   ngOnInit():void{
     let tokenActual = this.getToken();
   }
@@ -28,7 +31,12 @@ export class NuevoComponent {
 
   postForm(form:any){
     this.api.postUser(form).subscribe(data=>{
-      console.log(data);
+    if(data.success==true){
+      this.router.navigate(['home']);
+    }else{
+      this.errorStatus = true;
+      this.errorMsj=data.message;
+    }
     })
   }
 

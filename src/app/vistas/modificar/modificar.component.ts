@@ -20,6 +20,9 @@ export class ModificarComponent {
   
   constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiService){}
 
+  errorStatus:boolean = false;
+  errorMsj:any = "";
+
   ngOnInit():void{
     let usuarioId=this.activerouter.snapshot.paramMap.get('id');
     let tokenActual = this.getToken();
@@ -42,13 +45,23 @@ export class ModificarComponent {
 
   putForm(form:any){
     this.api.putUser(form,this.datosUsuario.idUsuario).subscribe(data=>{
-      console.log(data);
+      if(data.success==true){
+        this.router.navigate(['home']);
+      }else{
+        this.errorStatus = true;
+        this.errorMsj="Error al modificar usuario";
+      }
     })
   }
 
   eliminar(){
     this.api.deleteUser(this.datosUsuario.idUsuario).subscribe(data=>{
-      console.log(data);
+      if(data.success==true){
+        this.router.navigate(['home']);
+      }else{
+        this.errorStatus = true;
+        this.errorMsj="Error al eliminar usuario";
+      }
     });
   }
 

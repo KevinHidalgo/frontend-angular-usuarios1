@@ -6,12 +6,13 @@ import { ModificarComponent } from './vistas/modificar/modificar.component'
 import { HomeComponent } from './vistas/home/home.component'
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { AuthAdminGuard } from './guards/auth-admin.guard'
 
 const routes: Routes = [
   { path:'',redirectTo:'login',pathMatch:'full'},
   { path:'login',component:LoginComponent, canActivate:[NoAuthGuard]},
   { path:'home',component:HomeComponent, canActivate:[AuthGuard]},
-  { path:'nuevo',component:NuevoComponent, canActivate:[AuthGuard]},
+  { path:'nuevo',component:NuevoComponent, canActivate:[AuthAdminGuard]},
   { path:'modificar/:id',component:ModificarComponent, canActivate:[AuthGuard]}
 ];
 
